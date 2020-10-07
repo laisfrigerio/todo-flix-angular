@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo-list">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo Flix</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img title="TodoFlix logo" alt="TodoFlix logo" src="./images/logo-write.png" />
+            </div>
+        </header>
+        <main>
+            <section class="container" ng-controller="todo-controller as todoList">
+                <div class="todo-box">
+                    <form class="add-task" ng-submit="todoList.add()">
+                        <input autofocus type="text" name="task" ng-model="todoList.task" placeholder="What needs to be done?" />
+                        <button type="submit"><i class="fas fa-plus"></i></button>
+                    </form>
+                    <div class="list">
+                        <ul>
+                            <li class="todo" ng-repeat="(index, todo) in todoList.todos">
+                                <label>
+                                    <input class="is-done-{{todo.done}}" type="checkbox" ng-model="todo.done" ng-click="todoList.check(index)" ng-click="" />{{todo.task}}
+                                </label>
+                                <button class="fas fa-trash" ng-click="todoList.remove(index)"></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <i>Faltam {{todoList.quantityPedding}}</i>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script type="text/javascript" src="./todo.controller.js"></script>
+    </body>
+</html>
